@@ -3,7 +3,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private int _score = 10; 
-    [SerializeField] private int _hp = 1;
+    [SerializeField] private int _hp = 5;
     [SerializeField] private static int _max_hp = 100;
     [SerializeField] private bool _dead = false;
     public int Score {
@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
         get => _hp;
         set { 
             _hp = (value<_hp?value:(value>_max_hp?_max_hp:value));
-            UpdateState(); 
+            UpdateState();
         }
     }
     public bool IsDead => _dead;
@@ -23,8 +23,13 @@ public class Enemy : MonoBehaviour
     public delegate void HitHandler(Enemy enemy);
     public event DieHandler OnDie;
     public event HitHandler OnHit;
+    public void TakeDamage(int damage)
+    {
+        HP -= damage;
+    }
     private void UpdateState()
     {
+
         OnHit?.Invoke(this);
         if(_hp <= 0)
         {
