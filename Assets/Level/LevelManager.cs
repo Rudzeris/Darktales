@@ -34,15 +34,15 @@ public class LevelManager : MonoBehaviour
         foreach (Enemy enemy in enemies)
         {
             enemy.OnDie += EnemyDie;
-            enemy.OnHit += PlayerHitEnemy;
+            enemy.OnHit += EnemyGetDamage;
         }
     }
 
-    private void PlayerHitEnemy(Enemy enemy)
+    private void EnemyGetDamage(Enemy enemy)
     {
         if (!enemy.IsDead)
         {
-
+            
         }
     }
 
