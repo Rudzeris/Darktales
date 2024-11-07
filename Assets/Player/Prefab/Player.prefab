@@ -166,8 +166,8 @@ MonoBehaviour:
   jumpForce: 32
   groundLayer:
     serializedVersion: 2
-    m_Bits: 64
-  groundCollider: {fileID: 5615990415997820223}
+    m_Bits: 0
+  groundCollider: {fileID: 0}
 --- !u!70 &2084204353656265113
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -250,8 +250,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed0ac86a5367c264fb75dc11c1989841, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPoint: {fileID: 5776464221217139262}
-  attackCooldown: 0.5
+  attackPoint: {fileID: 0}
+  attackCooldown: 1
   isAttacking: 0
   attackTimer: 0
 --- !u!114 &6440674721421395006
@@ -401,4 +401,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   knockbackForce: 5
-  knockbackVerticalForce: 0.6
+  knockbackVerticalForce: 0.3

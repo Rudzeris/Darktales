@@ -34,23 +34,15 @@ public class LevelManager : MonoBehaviour
         foreach (Enemy enemy in enemies)
         {
             enemy.OnDie += EnemyDie;
-            enemy.OnHit += EnemyGetDamage;
-        }
-    }
-
-    private void EnemyGetDamage(Enemy enemy)
-    {
-        if (!enemy.IsDead)
-        {
-            
         }
     }
 
     private void EnemyDie(Enemy enemy)
     {
-        if(!enemy.IsDead)
+        if (!enemy.IsDead)
+        {
             Saturation += enemy.Score;
+        }
+        
     }
-    
-
 }
