@@ -1,4 +1,4 @@
-﻿namespace Assets.UI
+﻿namespace Assets.UI.Script.Command
 {
     public class WinCommand : IUICommand
     {
