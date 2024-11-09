@@ -1,8 +1,7 @@
-using TMPro;
-using UnityEngine;
-using UnityEngine.UI;
-
-public interface IUICommand
+namespace Assets.UI.Script.Command
 {
-    
+    public interface IUICommand
+    {
+
+    }
 }

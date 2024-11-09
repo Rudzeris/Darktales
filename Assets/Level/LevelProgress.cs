@@ -1,6 +1,3 @@
-using UnityEngine;
-
-// Класс для хранения прогресса уровня
 public class LevelProgress
 {
     private int _saturation;

@@ -7,7 +7,6 @@ public class EnemyController2D : MonoBehaviour
     [SerializeField] private float loseSightRadius = 4f; // Новый радиус для потери игрока
     private Transform player;
     private Vector2 initialPosition;
-    private bool movingRight = true;
     public enum State { Stop, Home, Player };
     [SerializeField] private State state;
 

@@ -1,7 +1,6 @@
 ﻿namespace Assets.UI.Script.Command
 {
-    public class WinCommand : IUICommand
+    public class ExitCommand : IUICommand
     {
-
     }
 }

@@ -1,10 +1,9 @@
-using System.Collections;
-using Unity.VisualScripting;
+using Assets.Character;
+using System;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, ICharacter
 {
-    [SerializeField] private int _score = 10;
     [SerializeField] private int _hp = 5;
     [SerializeField] private static int _max_hp = 5;
     [SerializeField] private bool _dead = false;
@@ -12,11 +11,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _get_damage_time = 0f;
     [SerializeField] private bool _isDamage;
     private Vector3 _spawnPoint;
-    public int Score
-    {
-        get => _score;
-        set => _score = value;
-    }
     public int HP
     {
         get => _hp;
@@ -29,10 +23,8 @@ public class Enemy : MonoBehaviour
     public bool IsDamage => _isDamage;
     public bool IsDead => _dead;
     private LevelManager levelManager;
-    public delegate void DieHandler(Enemy enemy);
-    public delegate void HitHandler(Enemy enemy);
-    public event DieHandler OnDie;
-    public event HitHandler OnHit;
+    public event EventHandler OnDie;
+    public event EventHandler OnHit;
 
     private void Awake()
     {
@@ -42,7 +34,7 @@ public class Enemy : MonoBehaviour
     {
         if (_isDamage)
         {
-            if (_get_damage_time<=0)
+            if (_get_damage_time <= 0)
             {
                 _isDamage = false;
             }
@@ -64,11 +56,11 @@ public class Enemy : MonoBehaviour
     private void UpdateState()
     {
 
-        OnHit?.Invoke(this);
+        OnHit?.Invoke(this, EventArgs.Empty);
         if (_hp <= 0)
         {
             _hp = 0;
-            OnDie?.Invoke(this);
+            OnDie?.Invoke(this,EventArgs.Empty);
             gameObject.SetActive(false);
         }
     }
