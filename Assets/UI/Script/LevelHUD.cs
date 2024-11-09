@@ -17,7 +17,7 @@ public class LevelHUD : MonoBehaviour
     private RectTransform[] saturationPanelTransform;
     private RectTransform[] imageTransforms;
 
-    public int[] LVLs;
+    public int[] Lvls;
 
     private readonly UICommandQueue commandQueue = new UICommandQueue();
 
@@ -71,15 +71,15 @@ public class LevelHUD : MonoBehaviour
                 {
                     case SaturationCommand st:
                         scoreText.text = $"Saturation: {st.Saturation}";
-                        for (int i = 0; i < LVLs.Length; i++)
+                        for (int i = 0; i < Lvls.Length; i++)
                         {
-                            if (st.Saturation < LVLs[i])
+                            if (st.Saturation < Lvls[i])
                             {
                                 imageTransforms[i].offsetMax =
                                 new Vector2(
                                     ( i==0
-? (float)st.Saturation / LVLs[i] * saturationPanelTransform[i].sizeDelta.x - saturationPanelTransform[i].sizeDelta.x
-: (((float)st.Saturation) - LVLs[i - 1]) / (LVLs[i] - LVLs[i-1]) * saturationPanelTransform[i].sizeDelta.x - saturationPanelTransform[i].sizeDelta.x
+? (float)st.Saturation / Lvls[i] * saturationPanelTransform[i].sizeDelta.x - saturationPanelTransform[i].sizeDelta.x
+: (((float)st.Saturation) - Lvls[i - 1]) / (Lvls[i] - Lvls[i-1]) * saturationPanelTransform[i].sizeDelta.x - saturationPanelTransform[i].sizeDelta.x
                                     ),
                                     imageTransforms[i].sizeDelta.y
                             );
