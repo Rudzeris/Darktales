@@ -6795,6 +6795,7 @@ MonoBehaviour:
   doorState: 1
   openDoorSprite: {fileID: 21300000, guid: 6eb903779604d2e40b0eb4c7cb676d5f, type: 3}
   closeDoorSprite: {fileID: 21300000, guid: 81c94fa04808f1c4d86864d8684c08c8, type: 3}
+  NoClose: 0
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -7074,11 +7075,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919387492}
   m_CullTransparentMesh: 1
---- !u!70 &1065614144 stripped
-CapsuleCollider2D:
-  m_CorrespondingSourceObject: {fileID: 5776464221217139262, guid: b26a79e1e2b188f419ec7bd3e14bf821, type: 3}
-  m_PrefabInstance: {fileID: 1073621381}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1073621381
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7130,22 +7126,6 @@ PrefabInstance:
     - target: {fileID: 3998305835320725636, guid: b26a79e1e2b188f419ec7bd3e14bf821, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 4016650129910012092, guid: b26a79e1e2b188f419ec7bd3e14bf821, type: 3}
-      propertyPath: attackPoint
-      value: 
-      objectReference: {fileID: 1065614144}
-    - target: {fileID: 5776464221217139262, guid: b26a79e1e2b188f419ec7bd3e14bf821, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7476022609841701677, guid: b26a79e1e2b188f419ec7bd3e14bf821, type: 3}
-      propertyPath: groundLayer.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
-    - target: {fileID: 8161660410654473459, guid: b26a79e1e2b188f419ec7bd3e14bf821, type: 3}
-      propertyPath: knockbackVerticalForce
-      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
