@@ -6,25 +6,22 @@ public class CharacterController2d : MonoBehaviour
 {
     private Rigidbody2D body;
     private Vector2 movementInput;
-    public bool isJump { get; private set; }
-    public int jumpCount { get; private set; }
-    [SerializeField] public bool isGrounded { get; private set; }
+    private bool isJump;
+    [SerializeField] private bool isGrounded;
     [SerializeField] private float acceleration = 18f;
-    [SerializeField] private float maxSpeed = 6f;
-    [SerializeField] private float jumpForce = 32f;
+    [SerializeField] private float maxSpeed = 36f;
+    [SerializeField] private float jumpForce = 240f;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private CircleCollider2D groundCollider;
-
-    // Булевые переменные для направления движения
-    [SerializeField] public bool isLeft { get; private set; }
-    [SerializeField] public bool isRight { get; private set; }
-    [SerializeField] public bool isUp { get; private set; }
-    [SerializeField] public bool isDown { get; private set; }
+    [SerializeField] private Animator animator;
+    
+    private bool facingRight = true;
 
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
         groundCollider = GetComponent<CircleCollider2D>();
+        //animator = GetComponent<Animator>();
     }
 
     public void OnMove(InputValue value)
@@ -34,7 +31,7 @@ public class CharacterController2d : MonoBehaviour
 
     public void OnJump()
     {
-        if (isGrounded || jumpCount < 2)
+        if (isGrounded)
         {
             isJump = true;
         }
@@ -43,32 +40,39 @@ public class CharacterController2d : MonoBehaviour
     private void FixedUpdate()
     {
         GroundCheck();
+        MoveCharacter();
+        //UpdateAnimation();
+    }
 
+    private void MoveCharacter()
+    {
         if (isJump)
         {
             body.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             isJump = false;
-            jumpCount++;
         }
 
         Vector2 velocity = body.velocity;
         float targetSpeed = movementInput.x * maxSpeed;
 
-        // Ускорение
         float speedDifference = targetSpeed - velocity.x;
         float accelerationRate = Mathf.Abs(targetSpeed) > 0.01f ? acceleration : acceleration * 2;
         float movement = Mathf.Pow(Mathf.Abs(speedDifference) * accelerationRate, 0.9f) * Mathf.Sign(speedDifference);
 
         body.AddForce(Vector2.right * movement);
 
-        // Ограничение максимальной скорости
         if (Mathf.Abs(body.velocity.x) > maxSpeed)
         {
             body.velocity = new Vector2(Mathf.Sign(body.velocity.x) * maxSpeed, body.velocity.y);
         }
 
-        // Обновление булевых переменных направления
-        UpdateDirectionFlags(body.velocity);
+        // Поворот персонажа в зависимости от направления движения
+        if ((facingRight && movementInput.x < 0) || (!facingRight && movementInput.x > 0))
+        {
+            facingRight = !facingRight;
+            transform.localScale = new Vector3(facingRight ? -1 : 1, 1, 1);
+            
+        }
     }
 
     private void GroundCheck()
@@ -76,18 +80,21 @@ public class CharacterController2d : MonoBehaviour
         Collider2D[] colliders = new Collider2D[16];
         int count = groundCollider.OverlapCollider(new ContactFilter2D { layerMask = groundLayer, useLayerMask = true }, colliders);
         isGrounded = (count > 0);
-
-        if (isGrounded)
-        {
-            jumpCount = 0; // Сброс счетчика прыжков при приземлении
-        }
     }
 
-    private void UpdateDirectionFlags(Vector2 velocity)
+    private void UpdateAnimation()
     {
-        isLeft = velocity.x < 0;
-        isRight = velocity.x > 0;
-        isUp = velocity.y > 0;
-        isDown = velocity.y < 0;
+        bool isWalking = Mathf.Abs(body.velocity.x) > 0.1f;
+
+        if (isWalking)
+        {
+            animator?.SetBool("isWalking", true);
+        }
+        else
+        {
+            animator?.SetBool("isWalking", false);
+        }
+        animator?.SetBool("isGrounded", isGrounded);
+        animator?.SetFloat("yVelocity", body.velocity.y);
     }
 }

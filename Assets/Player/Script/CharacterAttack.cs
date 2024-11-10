@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -38,6 +39,12 @@ public class CharacterAttack : MonoBehaviour
             isAttacking = true;
             attackTimer = attackCooldown;
             attackPoint.enabled = true;
+
+            Invoke("DisableAttackPoint",Time.fixedDeltaTime);
         }
+    }
+    private void DisableAttackPoint()
+    {
+        attackPoint.enabled = false;
     }
 }
