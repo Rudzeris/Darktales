@@ -1,3 +1,5 @@
+using Assets.Level.Objects;
+using System;
 using UnityEngine;
 
 public class AttackPoint : MonoBehaviour
@@ -33,6 +35,12 @@ public class AttackPoint : MonoBehaviour
                 }
             }
         }
+         else if (other.CompareTag("ContactObject"))
+        {
+            IContactObject obj = other.GetComponent<IContactObject>();
+            obj?.Contact(this, EventArgs.Empty);
+        }
+
     }
 
 
