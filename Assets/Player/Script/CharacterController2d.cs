@@ -67,10 +67,10 @@ public class CharacterController2d : MonoBehaviour
         }
 
         // Поворот персонажа в зависимости от направления движения
-        if ((facingRight && movementInput.x < 0) || (!facingRight && movementInput.x > 0))
+        if ((!facingRight && movementInput.x < 0) || (facingRight && movementInput.x > 0))
         {
             facingRight = !facingRight;
-            transform.localScale = new Vector3(facingRight ? -1 : 1, 1, 1);
+            transform.localScale = new Vector3(facingRight ? 1 : -1, 1, 1);
             
         }
     }
