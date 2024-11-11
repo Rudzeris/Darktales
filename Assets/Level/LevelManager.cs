@@ -5,7 +5,9 @@ using Assets.Player.Script.Abilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // Класс, который знает информацию про всех и добавляем им event 
 public class LevelManager : MonoBehaviour
@@ -31,13 +33,14 @@ public class LevelManager : MonoBehaviour
                 progress.RemoveSaturation(Saturation - value);
             else
                 progress.AddSaturation(value - Saturation);
-            levelHUD?.UpdateSaturation(Saturation);
             OpenAbilities();
+            levelHUD?.UpdateSaturation(Saturation);
         }
     }
-
+    public void LoadProgress(LevelProgress progress) => this.progress = progress;
     private void Awake()
     {
+        Time.timeScale = 1;
         progress = new LevelProgress();
         Saturation = startSaturation;
         // Enemy
@@ -49,7 +52,10 @@ public class LevelManager : MonoBehaviour
         // LevelHUD
         //levelHUD = GetComponent<LevelHUD>();
         if (levelHUD != null)
+        {
             levelHUD.Lvls = Lvls;
+            OnOpenAbilities += levelHUD.ActivateAbilities;
+        }
         // Player
         if (player is null)
             player = FindObjectOfType<Player>();
@@ -90,7 +96,7 @@ public class LevelManager : MonoBehaviour
     {
         if (sender is Player player)
         {
-
+            RestartScene();
         }
     }
     private void PlayerHit(object sender, EventArgs args)
@@ -104,9 +110,9 @@ public class LevelManager : MonoBehaviour
     private void OpenAbilities()
     {
         OnOpenAbilities?.Invoke(this, new EventOpenAbilities(
+            Saturation >= Lvls[0],
             Saturation >= Lvls[1],
-            Saturation >= Lvls[2],
-            Saturation >= Lvls[3]
+            Saturation >= Lvls[2]
             ));
     }
     // Contact
@@ -141,4 +147,10 @@ public class LevelManager : MonoBehaviour
             Debug.Log($"Door: {eventDoor.CurrentState}");
         }
     }
+    private void RestartScene()
+    {
+        UnityEngine.SceneManagement.Scene activeScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(activeScene.name);
+    }
+
 }

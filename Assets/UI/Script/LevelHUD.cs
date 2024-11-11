@@ -1,4 +1,6 @@
+using Assets.Character;
 using Assets.UI.Script.Command;
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -59,12 +61,6 @@ public class LevelHUD : MonoBehaviour
                             -(1-(float)st.Saturation / (float)Lvls[Lvls.Length-1])*saturationTransform.rect.width,
                             imageTransform.sizeDelta.y
                     );
-
-                        for (int i = 1; i < Lvls.Length - 1 && i - 1 < backgrounds.Length; i++)
-                            backgrounds[i - 1].sprite = (st.Saturation >= Lvls[i]?
-                                unlockSprite : lockSprite);
-                        
-
                         break;
                     case ReloadCommand:
                         var currentScene = SceneManager.GetActiveScene();
@@ -72,6 +68,15 @@ public class LevelHUD : MonoBehaviour
                         break;
                 }
             yield return null;
+        }
+    }
+    public void ActivateAbilities(object sender,EventArgs e)
+    {
+        if(e is EventOpenAbilities op)
+        {
+            backgrounds[0].sprite = op.Ability1 ? unlockSprite : lockSprite;
+            backgrounds[1].sprite = op.Ability2 ? unlockSprite : lockSprite;
+            backgrounds[2].sprite = op.Ability3 ? unlockSprite : lockSprite;
         }
     }
 }

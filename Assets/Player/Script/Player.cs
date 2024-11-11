@@ -16,11 +16,11 @@ public class Player : MonoBehaviour, ICharacter
 
     public void TakeDamage(int damage)
     {
-        OnHit(this, new EventDamage(damage));
+        OnHit?.Invoke(this, new EventDamage(damage));
         
-        if (LevelManager is not null && LevelManager.Saturation == 0)
+        if (LevelManager is not null && LevelManager.Saturation <= 0)
         {
-            OnDie(this, EventArgs.Empty);
+            OnDie?.Invoke(this, EventArgs.Empty);
             gameObject.SetActive(false);
         }
     }

@@ -300,6 +300,7 @@ MonoBehaviour:
   stunDuration: 5
   radius: 70
   cooldown: 20
+  toSpendSaturation: 0
   cooldownTimer: 0
 --- !u!114 &4811412613644701714
 MonoBehaviour:
@@ -317,6 +318,7 @@ MonoBehaviour:
   stunDuration: 5
   radius: 70
   cooldown: 30
+  toSpendSaturation: 0
   cooldownTimer: 0
 --- !u!114 &8587069300724987625
 MonoBehaviour:
@@ -333,6 +335,7 @@ MonoBehaviour:
   invulnerabilityDuration: 0.4
   dashDistance: 3
   cooldown: 3
+  toSpendSaturation: 0
   cooldownTimer: 0
 --- !u!1001 &5021645219305111188
 PrefabInstance:

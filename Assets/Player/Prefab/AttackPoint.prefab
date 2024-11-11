@@ -118,8 +118,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.9373369, y: 0.027583346}
-  m_Size: {x: 2.874671, y: 2.783353}
+  m_Offset: {x: -2.0130243, y: 0.23866837}
+  m_Size: {x: 5.026045, y: 3.2055233}
   m_Direction: 0
 --- !u!114 &5318395169415327229
 MonoBehaviour:
@@ -136,3 +136,4 @@ MonoBehaviour:
   damage: 1
   knockbackForce: 5
   knockbackVerticalForce: 0.3
+  DamageToEnemy: {fileID: 0}
