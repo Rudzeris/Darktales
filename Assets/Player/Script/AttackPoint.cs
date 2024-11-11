@@ -12,7 +12,7 @@ public class AttackPoint : MonoBehaviour
     {
         attackPointCollider = GetComponent<CapsuleCollider2D>();
     }
-
+    public AudioSource DamageToEnemy;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
@@ -20,9 +20,11 @@ public class AttackPoint : MonoBehaviour
             Enemy enemy = other.GetComponent<Enemy>();
             if (!enemy.IsDamage)
             {
+                if (DamageToEnemy != null)
+                    DamageToEnemy.Play();
                 // Наносим урон врагу
                 enemy.TakeDamage(damage);
-
+                
 
                 // Отталкиваем врага
                 Rigidbody2D enemyRb = other.GetComponent<Rigidbody2D>();
