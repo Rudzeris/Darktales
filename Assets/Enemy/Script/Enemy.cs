@@ -27,6 +27,7 @@ public class Enemy : MonoBehaviour, ICharacter
     public event EventHandler OnHit;
     
     private EnemyController2D enemyController;
+    private EnemyAttack enemyAttack;
 
     // Новые поля для оглушения
     private bool isStunned = false;
@@ -36,6 +37,7 @@ public class Enemy : MonoBehaviour, ICharacter
     {
         _spawnPoint = gameObject.transform.position;
         enemyController = gameObject.GetComponent<EnemyController2D>();
+        enemyAttack = gameObject.GetComponent<EnemyAttack>();
     }
 
     private void FixedUpdate()
@@ -106,10 +108,12 @@ public class Enemy : MonoBehaviour, ICharacter
     private void StopEnemyBehavior()
     {
         enemyController.enabled = false;
+        enemyAttack.enabled = false;
     }
 
     private void ResumeEnemyBehavior()
     {
-        enemyController.enabled |= true;
+        enemyController.enabled = true;
+        enemyAttack.enabled = true;
     }
 }
