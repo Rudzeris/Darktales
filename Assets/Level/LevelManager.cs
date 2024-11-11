@@ -33,8 +33,8 @@ public class LevelManager : MonoBehaviour
                 progress.RemoveSaturation(Saturation - value);
             else
                 progress.AddSaturation(value - Saturation);
-            levelHUD?.UpdateSaturation(Saturation);
             OpenAbilities();
+            levelHUD?.UpdateSaturation(Saturation);
         }
     }
     public void LoadProgress(LevelProgress progress) => this.progress = progress;
@@ -52,7 +52,10 @@ public class LevelManager : MonoBehaviour
         // LevelHUD
         //levelHUD = GetComponent<LevelHUD>();
         if (levelHUD != null)
+        {
             levelHUD.Lvls = Lvls;
+            OnOpenAbilities += levelHUD.ActivateAbilities;
+        }
         // Player
         if (player is null)
             player = FindObjectOfType<Player>();
@@ -107,9 +110,9 @@ public class LevelManager : MonoBehaviour
     private void OpenAbilities()
     {
         OnOpenAbilities?.Invoke(this, new EventOpenAbilities(
+            Saturation >= Lvls[0],
             Saturation >= Lvls[1],
-            Saturation >= Lvls[2],
-            Saturation >= Lvls[3]
+            Saturation >= Lvls[2]
             ));
     }
     // Contact
