@@ -11,6 +11,9 @@ public class LevelHUD : MonoBehaviour
     [SerializeField] private GameObject pauseElement;
     [SerializeField] private GameObject imageElement;
     [SerializeField] private GameObject saturationElement;
+    [SerializeField] private Image[] backgrounds;
+    [SerializeField] private Sprite lockSprite;
+    [SerializeField] private Sprite unlockSprite;
 
     private RectTransform saturationTransform;
     private RectTransform imageTransform;
@@ -57,7 +60,10 @@ public class LevelHUD : MonoBehaviour
                             imageTransform.sizeDelta.y
                     );
 
-
+                        for (int i = 1; i < Lvls.Length - 1 && i - 1 < backgrounds.Length; i++)
+                            backgrounds[i - 1].sprite = (st.Saturation >= Lvls[i]?
+                                unlockSprite : lockSprite);
+                        
 
                         break;
                     case ReloadCommand:

@@ -953,6 +953,12 @@ MonoBehaviour:
   pauseElement: {fileID: 0}
   imageElement: {fileID: 8190386279446331652}
   saturationElement: {fileID: 5024323212748553605}
+  backgrounds:
+  - {fileID: 4946138423095450105}
+  - {fileID: 6555809609482830638}
+  - {fileID: 7639038494670532611}
+  lockSprite: {fileID: 21300000, guid: c7275a832a1cfe94380b3ab225e7c22a, type: 3}
+  unlockSprite: {fileID: 21300000, guid: 5d02bd556a19777498c477659c9b3018, type: 3}
   Lvls: 
 --- !u!1 &5140681237819604676
 GameObject:
