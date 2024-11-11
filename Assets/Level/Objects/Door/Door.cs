@@ -14,6 +14,7 @@ namespace Assets.Level.Objects.Door
         public EventHandler OnContact;
         private Collider2D doorCollider;
         private SpriteRenderer doorSpriteRenderer;
+        public AudioSource doorOpenClose;
 
         private void Awake()
         {
@@ -23,6 +24,7 @@ namespace Assets.Level.Objects.Door
 
         public void Contact(object sender, EventArgs args)
         {
+            doorOpenClose.Play();
             if (args is EventDoor eventDoor || NoClose)
             {
                 if (doorState != DoorState.Open)
