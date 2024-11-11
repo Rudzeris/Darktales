@@ -27,7 +27,7 @@ public class DashAbility : MonoBehaviour, IAbility
     {
         if (cooldownTimer > 0)
         {
-            Debug.Log("Ability is on cooldown.");
+            Debug.Log($"Ability is on cooldown. Wait {cooldownTimer} sec");
             return;
         }
 

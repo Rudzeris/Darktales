@@ -40,7 +40,14 @@ public class CharacterAttack : MonoBehaviour
             attackTimer = attackCooldown;
             attackPoint.enabled = true;
 
-            Invoke("DisableAttackPoint",Time.fixedDeltaTime);
+            Invoke("DisableAttackPoint", Time.fixedDeltaTime);
+        }
+        else
+        {
+            if (isAttacking)
+            {
+                Debug.Log($"Ability is on cooldown. Wait {attackTimer} sec");
+            }
         }
     }
     private void DisableAttackPoint()
