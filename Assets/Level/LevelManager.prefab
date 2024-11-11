@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelHUD: {fileID: 0}
-  Lvls: 00000000320000004b000000640000007d000000
+  Lvls: 00000000210000004200000064000000
   startSaturation: 33
   getSaturation: 10
   lostSaturation: 3

@@ -46,7 +46,7 @@ public class LevelManager : MonoBehaviour
             enemy.OnDie += EnemyDie;
         }
         // LevelHUD
-        levelHUD = GetComponent<LevelHUD>();
+        //levelHUD = GetComponent<LevelHUD>();
         if (levelHUD != null)
             levelHUD.Lvls = Lvls;
         // Player
