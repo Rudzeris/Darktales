@@ -14,8 +14,8 @@ public class CharacterController2d : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private CircleCollider2D groundCollider;
     [SerializeField] private Animator animator;
-    
-    private bool facingRight = true;
+
+    public bool facingLeft { get; private set; } = true;
 
     private void Awake()
     {
@@ -67,10 +67,10 @@ public class CharacterController2d : MonoBehaviour
         }
 
         // Поворот персонажа в зависимости от направления движения
-        if ((!facingRight && movementInput.x < 0) || (facingRight && movementInput.x > 0))
+        if ((!facingLeft && movementInput.x < 0) || (facingLeft && movementInput.x > 0))
         {
-            facingRight = !facingRight;
-            transform.localScale = new Vector3(facingRight ? 1 : -1, 1, 1);
+            facingLeft = !facingLeft;
+            transform.localScale = new Vector3(facingLeft ? 1 : -1, 1, 1);
             
         }
     }

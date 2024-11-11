@@ -18,6 +18,9 @@ GameObject:
   - component: {fileID: 4016650129910012092}
   - component: {fileID: 6440674721421395006}
   - component: {fileID: 7954774713367651552}
+  - component: {fileID: 1597438643983036154}
+  - component: {fileID: 4811412613644701714}
+  - component: {fileID: 8587069300724987625}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -281,6 +284,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d3e2162206fe94598408da442bc8cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1597438643983036154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3998305835320725636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eea85a0513fede74cb361082e6d26495, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  stunDuration: 5
+  radius: 70
+  cooldown: 20
+  cooldownTimer: 0
+--- !u!114 &4811412613644701714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3998305835320725636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fce50612a636a4e4aafeee30ce974300, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  stunDuration: 5
+  radius: 70
+  cooldown: 30
+  cooldownTimer: 0
+--- !u!114 &8587069300724987625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3998305835320725636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53f6c37bf99885e47b9aa616d7469b6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invulnerabilityDuration: 0.4
+  dashDistance: 3
+  cooldown: 3
+  cooldownTimer: 0
 --- !u!1001 &5021645219305111188
 PrefabInstance:
   m_ObjectHideFlags: 0

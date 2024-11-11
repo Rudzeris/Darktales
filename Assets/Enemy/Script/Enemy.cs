@@ -25,11 +25,19 @@ public class Enemy : MonoBehaviour, ICharacter
     private LevelManager levelManager;
     public event EventHandler OnDie;
     public event EventHandler OnHit;
+    
+    private EnemyController2D enemyController;
+
+    // Новые поля для оглушения
+    private bool isStunned = false;
+    private float stunTimer = 0f;
 
     private void Awake()
     {
         _spawnPoint = gameObject.transform.position;
+        enemyController = gameObject.GetComponent<EnemyController2D>();
     }
+
     private void FixedUpdate()
     {
         if (_isDamage)
@@ -43,7 +51,19 @@ public class Enemy : MonoBehaviour, ICharacter
                 _get_damage_time -= Time.fixedDeltaTime;
             }
         }
+
+        // Обработка оглушения
+        if (isStunned)
+        {
+            stunTimer -= Time.fixedDeltaTime;
+            if (stunTimer <= 0f)
+            {
+                isStunned = false;
+                ResumeEnemyBehavior();
+            }
+        }
     }
+
     public void TakeDamage(int damage)
     {
         if (!_isDamage)
@@ -53,23 +73,43 @@ public class Enemy : MonoBehaviour, ICharacter
             _isDamage = true;
         }
     }
+
     private void UpdateState()
     {
-
         OnHit?.Invoke(this, EventArgs.Empty);
         if (_hp <= 0)
         {
             _hp = 0;
-            OnDie?.Invoke(this,EventArgs.Empty);
+            OnDie?.Invoke(this, EventArgs.Empty);
             gameObject.SetActive(false);
         }
     }
+
     private void OnEnable()
     {
         _dead = false;
     }
+
     private void OnDisable()
     {
         _dead = true;
+    }
+
+    // Реализация метода Stun
+    public void Stun(float duration)
+    {
+        isStunned = true;
+        stunTimer = duration;
+        StopEnemyBehavior();
+    }
+
+    private void StopEnemyBehavior()
+    {
+        enemyController.enabled = false;
+    }
+
+    private void ResumeEnemyBehavior()
+    {
+        enemyController.enabled |= true;
     }
 }
