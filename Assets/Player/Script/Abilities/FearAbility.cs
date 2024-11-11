@@ -18,6 +18,8 @@ public class FearAbility : MonoBehaviour, IAbility
 
     public event EventHandler OnActivated;
 
+    public AudioSource FearSound;
+
     public void Activate()
     {
         if (cooldownTimer > 0)
@@ -40,6 +42,8 @@ public class FearAbility : MonoBehaviour, IAbility
         }
         if (enemyCollider != null)
         {
+            if (FearSound != null)
+                FearSound.Play();
             enemyCollider.GetComponent<Enemy>().TakeDamage(damage);
             enemyCollider.GetComponent<Enemy>().Stun(stunDuration);
             OnActivated?.Invoke(this, new EventSaturation(toSpendSaturation));
