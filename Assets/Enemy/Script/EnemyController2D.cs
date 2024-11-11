@@ -10,6 +10,8 @@ public class EnemyController2D : MonoBehaviour
     public enum State { Stop, Home, Player };
     [SerializeField] private State state;
 
+    private bool facingLeft = true;
+
     private void Start()
     {
         state = State.Stop;
@@ -67,5 +69,13 @@ public class EnemyController2D : MonoBehaviour
     {
         Vector2 position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
         transform.position = new Vector3(position.x, transform.position.y, transform.position.z);
+
+        // Поворот персонажа в зависимости от направления движения
+        Vector2 direction = target - (Vector2)transform.position;
+        if ((direction.x < 0 && !facingLeft) || (direction.x > 0 && facingLeft))
+        {
+            facingLeft = !facingLeft;
+            transform.localScale = new Vector3(facingLeft ? 1 : -1, 1, 1);
+        }
     }
 }
