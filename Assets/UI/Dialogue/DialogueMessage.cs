@@ -3,7 +3,6 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem.DualShock.LowLevel;
 using UnityEngine.UI;
 
 public class DialogueMessage : MonoBehaviour
@@ -14,6 +13,10 @@ public class DialogueMessage : MonoBehaviour
     [SerializeField] private float timerMessage;
     private float displayTime;
 
+    private void Awake()
+    {
+        gameObject.SetActive(false);
+    }
     public void ShowMessage(object sender, EventArgs e)
     {
         if (e is EventMessage message)
@@ -39,7 +42,7 @@ public class DialogueMessage : MonoBehaviour
     {
         if (timerMessage > 0)
         {
-            timerMessage-= Time.fixedDeltaTime;
+            timerMessage -= Time.fixedDeltaTime;
         }
     }
 }

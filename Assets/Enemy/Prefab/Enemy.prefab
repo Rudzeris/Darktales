@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 6172642779062902111}
   - component: {fileID: 1823467287034026839}
   - component: {fileID: 6388935517100241804}
+  - component: {fileID: 3428143158533498075}
   m_Layer: 3
   m_Name: Enemy
   m_TagString: Enemy
@@ -213,6 +214,7 @@ MonoBehaviour:
   visionRadius: 3
   loseSightRadius: 4
   state: 0
+  animator: {fileID: 0}
 --- !u!114 &4120000270682224024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,6 +248,7 @@ MonoBehaviour:
   attackDuration: 0.2
   attackDamage: 5
   animator: {fileID: 0}
+  DamageToHero: {fileID: 0}
 --- !u!58 &1823467287034026839
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -302,3 +305,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3428143158533498075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081117743961544507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33724e588a2f4094c803021610d075a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueSprite: {fileID: 21300000, guid: c85ec6f62228bc14c8413d278f3adda0, type: 3}
+  messages: []
+  duration: 5
+  numberMessage: 0
+  isRandom: 0
+  coolTimer: 0

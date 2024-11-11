@@ -22,7 +22,7 @@ public class LevelManager : MonoBehaviour
     private Player player;
     public event EventHandler OnOpenAbilities;
     private LevelProgress progress;
-    private DialogueMessage message;
+    [SerializeField] private DialogueMessage message;
 
     [SerializeField]
     public int Saturation
@@ -89,7 +89,6 @@ public class LevelManager : MonoBehaviour
         // Message
         if (levelHUD != null)
         {
-            message = FindObjectOfType<DialogueMessage>();
             foreach (var sender in FindObjectsOfType<DialogueSender>())
             {
                 if (message != null && sender != null)

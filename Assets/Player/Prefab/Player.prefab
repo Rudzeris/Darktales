@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 1597438643983036154}
   - component: {fileID: 4811412613644701714}
   - component: {fileID: 8587069300724987625}
-  - component: {fileID: 9069017318632678131}
+  - component: {fileID: 7416103266848183276}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -303,6 +303,7 @@ MonoBehaviour:
   cooldown: 20
   toSpendSaturation: 0
   cooldownTimer: 0
+  FearSound: {fileID: 0}
 --- !u!114 &4811412613644701714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,7 +339,8 @@ MonoBehaviour:
   cooldown: 3
   toSpendSaturation: 0
   cooldownTimer: 0
---- !u!114 &9069017318632678131
+  DashSound: {fileID: 0}
+--- !u!114 &7416103266848183276
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -347,14 +349,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 3998305835320725636}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05516a914ba939f4b80bacc7661973b3, type: 3}
+  m_Script: {fileID: 11500000, guid: 33724e588a2f4094c803021610d075a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueSprite: {fileID: 21300000, guid: c85ec6f62228bc14c8413d278f3adda0, type: 3}
+  dialogueSprite: {fileID: 21300000, guid: 0170b5128b82b1048b4a3a550ce52634, type: 3}
   messages: []
   duration: 4
   numberMessage: 0
   isRandom: 0
+  "\u0441ooldown": 4
+  coolTimer: 0
 --- !u!1001 &5021645219305111188
 PrefabInstance:
   m_ObjectHideFlags: 0

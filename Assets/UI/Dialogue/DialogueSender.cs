@@ -10,18 +10,17 @@ namespace Assets.UI.Dialogue
     {
         [SerializeField] private Sprite dialogueSprite;
         [SerializeField] private List<string> messages = new List<string>();
-        [SerializeField] private float duration = 4f;
+        [SerializeField] private float duration = 5f;
         [SerializeField] int numberMessage = 0;
         [SerializeField] bool isRandom = false;
         public Sprite Image => dialogueSprite;
         public event EventHandler OnSendMessage;
 
-
-        [SerializeField] private float сooldown = 4f;
         [SerializeField] private float coolTimer = 0f;
 
         public void SendMessage(int i = -1)
         {
+            if (coolTimer > 0f) return;
             if (messages.Count <= 0) return;
             if (i == -1)
             {
@@ -32,7 +31,7 @@ namespace Assets.UI.Dialogue
             }
             else
                 numberMessage = i;
-            coolTimer = coolTimer;
+            coolTimer = duration;
             Debug.Log($"Sending message: {messages[numberMessage]}");
             OnSendMessage?.Invoke(this, new EventMessage(
                 messages[numberMessage], dialogueSprite, duration));
