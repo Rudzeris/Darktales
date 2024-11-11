@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 993311993544187331}
   - component: {fileID: 7721438176632689294}
+  - component: {fileID: 5921714501773112721}
+  - component: {fileID: 4882957343929943931}
   m_Layer: 0
   m_Name: LevelManager
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,9 +47,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelHUD: {fileID: 0}
-  enemies: []
-  player: {fileID: 0}
-  LVLs: 00000000320000004b000000640000007d000000
+  Lvls: 00000000320000004b000000640000007d000000
   startSaturation: 33
   getSaturation: 10
   lostSaturation: 3
+--- !u!114 &5921714501773112721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7969533255676266041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: e98f5fe090c02b344ac0d77fbd030971, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Level
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &4882957343929943931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7969533255676266041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed6f84400914bab40ba3efef54d5ba78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPaused: 0
