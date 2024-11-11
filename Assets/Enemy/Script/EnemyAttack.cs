@@ -10,6 +10,8 @@ public class EnemyAttack : MonoBehaviour
     private float attackCooldownTimer = 0f;
     private bool isAttacking = false;
 
+    public AudioSource DamageToHero;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -45,6 +47,8 @@ public class EnemyAttack : MonoBehaviour
             Player player = collision.GetComponent<Player>();
             if (player != null)
             {
+                if (DamageToHero != null)
+                    DamageToHero.Play();
                 player.TakeDamage(attackDamage);
             }
             attackCooldownTimer = attackCooldown;
