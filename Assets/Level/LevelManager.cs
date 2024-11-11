@@ -27,8 +27,8 @@ public class LevelManager : MonoBehaviour
         get => progress.Saturation;
         set
         {
-            if(value < Saturation)
-                progress.RemoveSaturation(Saturation-value);
+            if (value < Saturation)
+                progress.RemoveSaturation(Saturation - value);
             else
                 progress.AddSaturation(value - Saturation);
             levelHUD?.UpdateSaturation(Saturation);
@@ -66,11 +66,14 @@ public class LevelManager : MonoBehaviour
             i.OnContact += ContactObject;
         }
         // Abilities
-        player.GetComponent<CharacterAbilities>().OnActivated += (object sender, EventArgs e) =>
+        var abilities = player.GetComponent<CharacterAbilities>();
+        abilities.OnActivated += (object sender, EventArgs e) =>
         {
-            if(sender is IAbility && e is EventSaturation sat)
+            if (sender is IAbility && e is EventSaturation sat)
                 Saturation -= sat.Saturation;
         };
+        OnOpenAbilities += abilities.AbilityActivate;
+        Saturation += 0;
     }
     public void Start()
     {
