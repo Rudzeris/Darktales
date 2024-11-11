@@ -1,7 +1,6 @@
 ﻿using Assets.Character;
 using Assets.Player.Script.Abilities;
 using System;
-using UnityEditor.Build;
 using UnityEngine;
 
 public class FearAbility : MonoBehaviour, IAbility
