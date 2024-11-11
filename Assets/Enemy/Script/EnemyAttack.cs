@@ -3,14 +3,16 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     [SerializeField] private float attackCooldown = 1.5f; // Время между атаками
-    [SerializeField] private float attackDuration = 0.2f; // Длительность атаки
+    [SerializeField] private float attackDuration = 1f; // Длительность атаки
     [SerializeField] private int attackDamage = 5; // Урон от атаки
+    [SerializeField] private Animator animator;
 
     private float attackCooldownTimer = 0f;
     private bool isAttacking = false;
 
     private void Awake()
     {
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -24,12 +26,14 @@ public class EnemyAttack : MonoBehaviour
     private void StartAttack()
     {
         isAttacking = true;
+        animator?.SetBool("IsAttacking", true);
+        Invoke("StopAttack", attackDuration);
     }
 
     private void StopAttack()
     {
         isAttacking = false;
-        attackCooldownTimer = attackCooldown;
+        animator?.SetBool("IsAttacking", false);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -43,7 +47,6 @@ public class EnemyAttack : MonoBehaviour
             {
                 player.TakeDamage(attackDamage);
             }
-
             attackCooldownTimer = attackCooldown;
         }
     }

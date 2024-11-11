@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 282
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,10 +100,10 @@ TextureImporter:
       name: vrag ataka_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 50
-        width: 1000
-        height: 900
+        x: 140
+        y: 97
+        width: 614
+        height: 711
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,10 +121,10 @@ TextureImporter:
       name: vrag ataka_1
       rect:
         serializedVersion: 2
-        x: 1000
-        y: 50
-        width: 1000
-        height: 900
+        x: 1113
+        y: 91
+        width: 639
+        height: 717
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,10 +142,10 @@ TextureImporter:
       name: vrag ataka_2
       rect:
         serializedVersion: 2
-        x: 2000
-        y: 50
-        width: 1000
-        height: 900
+        x: 2059
+        y: 91
+        width: 669
+        height: 714
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,10 +163,10 @@ TextureImporter:
       name: vrag ataka_3
       rect:
         serializedVersion: 2
-        x: 3000
-        y: 50
-        width: 1000
-        height: 900
+        x: 3119
+        y: 91
+        width: 629
+        height: 714
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,10 +184,10 @@ TextureImporter:
       name: vrag ataka_4
       rect:
         serializedVersion: 2
-        x: 4000
-        y: 50
-        width: 1000
-        height: 900
+        x: 4076
+        y: 94
+        width: 670
+        height: 714
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,10 +205,10 @@ TextureImporter:
       name: vrag ataka_5
       rect:
         serializedVersion: 2
-        x: 5000
-        y: 50
-        width: 1000
-        height: 900
+        x: 5105
+        y: 91
+        width: 639
+        height: 714
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,10 +226,10 @@ TextureImporter:
       name: vrag ataka_6
       rect:
         serializedVersion: 2
-        x: 6000
-        y: 50
-        width: 1000
-        height: 900
+        x: 6134
+        y: 94
+        width: 614
+        height: 711
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

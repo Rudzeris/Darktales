@@ -9,6 +9,7 @@ public class EnemyController2D : MonoBehaviour
     private Vector2 initialPosition;
     public enum State { Stop, Home, Player };
     [SerializeField] private State state;
+    [SerializeField] private Animator animator;
 
     private bool facingLeft = true;
 
@@ -17,6 +18,7 @@ public class EnemyController2D : MonoBehaviour
         state = State.Stop;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         initialPosition = transform.position;
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -56,6 +58,7 @@ public class EnemyController2D : MonoBehaviour
                 else if (distanceToInitial <= 1f)
                 {
                     state = State.Stop;
+                    animator?.SetBool("IsWalking", false);
                 }
                 else
                 {
@@ -77,5 +80,6 @@ public class EnemyController2D : MonoBehaviour
             facingLeft = !facingLeft;
             transform.localScale = new Vector3(facingLeft ? 1 : -1, 1, 1);
         }
+        animator?.SetBool("IsWalking", true);
     }
 }

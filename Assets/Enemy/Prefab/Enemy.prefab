@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 4120000270682224024}
   - component: {fileID: 6172642779062902111}
   - component: {fileID: 1823467287034026839}
+  - component: {fileID: 6388935517100241804}
   m_Layer: 3
   m_Name: Enemy
   m_TagString: Enemy
@@ -80,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1727725331, guid: 44d435a6a6dc6b542b7a5c969f9bc8d0, type: 3}
+  m_Sprite: {fileID: -1040683864, guid: 9cb217b7fa127764f9d239178f8c9700, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -153,10 +154,10 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.21533269, y: 0.5252862}
-  - {x: -0.33642554, y: 0.0066950917}
-  - {x: 0.6038722, y: -0.017485738}
-  - {x: 0.59789026, y: 0.45907438}
+  - {x: -0.2844566, y: -0.73276925}
+  - {x: -0.3917247, y: -1.2651854}
+  - {x: 0.7835944, y: -1.2478918}
+  - {x: 0.8052621, y: -0.66073334}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -193,8 +194,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.19661152, y: 1.1605}
-  m_Size: {x: 1.143089, y: 1.5960584}
+  m_Offset: {x: 0.27264792, y: 0.2895385}
+  m_Size: {x: 1.4334096, y: 2.010802}
   m_Direction: 0
 --- !u!114 &3829669351081906082
 MonoBehaviour:
@@ -277,6 +278,27 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.683983, y: 0.82646835}
+  m_Offset: {x: -0.89135504, y: -0.14126682}
   serializedVersion: 2
-  m_Radius: 0.25841492
+  m_Radius: 0.4243126
+--- !u!95 &6388935517100241804
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081117743961544507}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 846483ec0c2427247bf91ce06e782f30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
