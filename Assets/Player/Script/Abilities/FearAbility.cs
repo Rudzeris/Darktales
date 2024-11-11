@@ -1,4 +1,6 @@
-﻿using Assets.Player.Script.Abilities;
+﻿using Assets.Character;
+using Assets.Player.Script.Abilities;
+using System;
 using UnityEditor.Build;
 using UnityEngine;
 
@@ -8,10 +10,13 @@ public class FearAbility : MonoBehaviour, IAbility
     [SerializeField] private float stunDuration = 5f;
     [SerializeField] private float radius = Screen.width / 4;
     [SerializeField] private float cooldown = 20f;
+    [SerializeField] private int toSpendSaturation = 0;
 
     [SerializeField] private float cooldownTimer = 0f;
 
     public float Cooldown { get { return cooldown; } }
+
+    public event EventHandler OnActivated;
 
     public void Activate()
     {
@@ -37,9 +42,10 @@ public class FearAbility : MonoBehaviour, IAbility
         {
             enemyCollider.GetComponent<Enemy>().TakeDamage(damage);
             enemyCollider.GetComponent<Enemy>().Stun(stunDuration);
+            OnActivated?.Invoke(this, new EventSaturation(toSpendSaturation));
+            cooldownTimer = cooldown;
         }
 
-            cooldownTimer = cooldown;
     }
 
     void Update()

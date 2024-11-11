@@ -1,9 +1,10 @@
 using Assets.Player.Script.Abilities;
+using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class CharacterAbilities : MonoBehaviour
 {
+    public event EventHandler OnActivated;
     [SerializeField] private IAbility ability1;
     [SerializeField] private IAbility ability2;
     [SerializeField] private IAbility ability3;
@@ -12,6 +13,10 @@ public class CharacterAbilities : MonoBehaviour
         ability1 = GetComponent<FearAbility>();
         ability2 = GetComponent<DashAbility>();
         ability3 = GetComponent<TerrifyingScreamAbility>();
+
+        ability1.OnActivated += AbilityActivate;
+        ability2.OnActivated += AbilityActivate;
+        ability3.OnActivated += AbilityActivate;
     }
     public void OnAbility1()
     {
@@ -26,5 +31,9 @@ public class CharacterAbilities : MonoBehaviour
     public void OnAbility3()
     {
         ability3?.Activate();
+    }
+    private void AbilityActivate(object sender, EventArgs e)
+    {
+        OnActivated?.Invoke(sender, e);
     }
 }

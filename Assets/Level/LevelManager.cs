@@ -1,6 +1,7 @@
 using Assets.Character;
 using Assets.Level.Objects;
 using Assets.Level.Objects.Door;
+using Assets.Player.Script.Abilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,10 +28,10 @@ public class LevelManager : MonoBehaviour
         set
         {
             if(value < Saturation)
-                progress.RemoveSaturation(value);
+                progress.RemoveSaturation(Saturation-value);
             else
-                progress.AddSaturation(value);
-            levelHUD?.UpdateSaturation(value);
+                progress.AddSaturation(value - Saturation);
+            levelHUD?.UpdateSaturation(Saturation);
             OpenAbilities();
         }
     }
@@ -64,6 +65,12 @@ public class LevelManager : MonoBehaviour
             contactObjects.Add(i);
             i.OnContact += ContactObject;
         }
+        // Abilities
+        player.GetComponent<CharacterAbilities>().OnActivated += (object sender, EventArgs e) =>
+        {
+            if(sender is IAbility && e is EventSaturation sat)
+                Saturation -= sat.Saturation;
+        };
     }
     public void Start()
     {

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Assets.Character;
+using System;
+using UnityEngine;
 
 namespace Assets.Player.Script.Abilities
 {
@@ -8,10 +10,13 @@ namespace Assets.Player.Script.Abilities
         [SerializeField] private float stunDuration = 5f;
         [SerializeField] private float radius = Screen.width / 4;
         [SerializeField] private float cooldown = 30f;
+        [SerializeField] private int toSpendSaturation = 0;
 
         [SerializeField] private float cooldownTimer = 0f;
 
         public float Cooldown { get { return cooldown; } }
+
+        public event EventHandler OnActivated;
 
         public void Activate()
         {
@@ -31,7 +36,7 @@ namespace Assets.Player.Script.Abilities
                     enemy.GetComponent<Enemy>().Stun(stunDuration);
                 }
             }
-
+            OnActivated?.Invoke(this, new EventSaturation(toSpendSaturation));
 
             cooldownTimer = cooldown;
         }
