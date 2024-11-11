@@ -20,7 +20,8 @@ public class AttackPoint : MonoBehaviour
             Enemy enemy = other.GetComponent<Enemy>();
             if (!enemy.IsDamage)
             {
-                DamageToEnemy.Play();
+                if (DamageToEnemy != null)
+                    DamageToEnemy.Play();
                 // Наносим урон врагу
                 enemy.TakeDamage(damage);
                 

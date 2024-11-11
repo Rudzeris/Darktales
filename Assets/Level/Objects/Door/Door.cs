@@ -24,7 +24,8 @@ namespace Assets.Level.Objects.Door
 
         public void Contact(object sender, EventArgs args)
         {
-            doorOpenClose.Play();
+            if (doorOpenClose != null)
+                doorOpenClose.Play();
             if (args is EventDoor eventDoor || NoClose)
             {
                 if (doorState != DoorState.Open)
