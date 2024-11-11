@@ -19,6 +19,8 @@ public class DashAbility : MonoBehaviour, IAbility
 
     public event EventHandler OnActivated;
 
+    public AudioSource DashSound;
+
     public float Cooldown { get { return cooldown; } }
 
     private void Awake()
@@ -40,7 +42,8 @@ public class DashAbility : MonoBehaviour, IAbility
         Vector3 dashPosition = transform.position + (isLeft?-1:1)*transform.right * dashDistance;
         transform.position = dashPosition;
         OnActivated?.Invoke(this, new EventSaturation(toSpendSaturation));
-
+        if (DashSound != null)
+            DashSound.Play();
         StartCoroutine(Invulnerability());
     }
 
