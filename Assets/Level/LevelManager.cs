@@ -2,10 +2,10 @@ using Assets.Character;
 using Assets.Level.Objects;
 using Assets.Level.Objects.Door;
 using Assets.Player.Script.Abilities;
+using Assets.UI.Dialogue;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,6 +22,7 @@ public class LevelManager : MonoBehaviour
     private Player player;
     public event EventHandler OnOpenAbilities;
     private LevelProgress progress;
+    private DialogueMessage message;
 
     [SerializeField]
     public int Saturation
@@ -80,10 +81,29 @@ public class LevelManager : MonoBehaviour
         };
         OnOpenAbilities += abilities.AbilityActivate;
         Saturation += 0;
+        
     }
     public void Start()
     {
         levelHUD?.UpdateSaturation(Saturation);
+        // Message
+        if (levelHUD != null)
+        {
+            message = FindObjectOfType<DialogueMessage>();
+            foreach (var sender in FindObjectsOfType<DialogueSender>())
+            {
+                if (message != null && sender != null)
+                {
+                    sender.OnSendMessage += message.ShowMessage;
+                    Debug.Log("Subscribed to OnSendMessage");
+                }
+                else
+                {
+                    Debug.Log("DialogueSender or DialogueMessage is null.");
+                }
+            }
+
+        }
     }
     // Enemy
     private void EnemyDie(object sender, EventArgs args)
