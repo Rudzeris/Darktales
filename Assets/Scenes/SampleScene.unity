@@ -6549,6 +6549,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3247340513930790308, guid: b26a79e1e2b188f419ec7bd3e14bf821, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3998305835320725636, guid: b26a79e1e2b188f419ec7bd3e14bf821, type: 3}
       propertyPath: m_Name
       value: Player
@@ -6722,14 +6726,6 @@ PrefabInstance:
     - target: {fileID: 2490450578216507912, guid: 77df6c5aa3f883648bcc11f3da3cb7a5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3829669351081906082, guid: 77df6c5aa3f883648bcc11f3da3cb7a5, type: 3}
-      propertyPath: visionRadius
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4120000270682224024, guid: 77df6c5aa3f883648bcc11f3da3cb7a5, type: 3}
-      propertyPath: _get_damage_cooldown
-      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
