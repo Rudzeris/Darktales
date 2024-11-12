@@ -1,4 +1,6 @@
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseGame : MonoBehaviour
 {
@@ -6,6 +8,7 @@ public class PauseGame : MonoBehaviour
 
     private void OnPause()
     {
+        SceneManager.LoadScene(0);
         if (isPaused)
         {
             ResumeGame();

@@ -171,5 +171,8 @@ public class LevelManager : MonoBehaviour
         UnityEngine.SceneManagement.Scene activeScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(activeScene.name);
     }
-
+    public void Win()
+    {
+        levelHUD.Win();
+    }
 }

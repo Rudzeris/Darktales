@@ -16,6 +16,7 @@ public class LevelHUD : MonoBehaviour
     [SerializeField] private Image[] backgrounds;
     [SerializeField] private Sprite lockSprite;
     [SerializeField] private Sprite unlockSprite;
+    [SerializeField] private GameObject winPanel;
 
     private RectTransform saturationTransform;
     private RectTransform imageTransform;
@@ -58,7 +59,7 @@ public class LevelHUD : MonoBehaviour
                     case SaturationCommand st:
                         imageTransform.offsetMax =
                         new Vector2(
-                            -(1-(float)st.Saturation / (float)Lvls[Lvls.Length-1])*saturationTransform.rect.width,
+                            -(1 - (float)st.Saturation / (float)Lvls[Lvls.Length - 1]) * saturationTransform.rect.width,
                             imageTransform.sizeDelta.y
                     );
                         break;
@@ -66,13 +67,19 @@ public class LevelHUD : MonoBehaviour
                         var currentScene = SceneManager.GetActiveScene();
                         yield return SceneManager.LoadSceneAsync(currentScene.name);
                         break;
+                    case WinCommand:
+                        winPanel?.SetActive(true);
+                        yield return new WaitForSeconds(2);
+                        SceneManager.LoadScene(0);
+                        break;
                 }
             yield return null;
         }
     }
-    public void ActivateAbilities(object sender,EventArgs e)
+
+    public void ActivateAbilities(object sender, EventArgs e)
     {
-        if(e is EventOpenAbilities op)
+        if (e is EventOpenAbilities op)
         {
             backgrounds[0].sprite = op.Ability1 ? unlockSprite : lockSprite;
             backgrounds[1].sprite = op.Ability2 ? unlockSprite : lockSprite;
