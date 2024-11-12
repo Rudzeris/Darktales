@@ -20,7 +20,7 @@ namespace Assets.UI.Dialogue
 
         public void SendMessage(int i = -1)
         {
-            if (messages.Count <= 0) return;
+            if (messages == null ||messages.Count <= 0) return;
             if (i == -1)
             {
                 if (!isRandom)
@@ -30,6 +30,7 @@ namespace Assets.UI.Dialogue
             }
             else
                 numberMessage = i;
+            
             Debug.Log($"Sending message: {messages[numberMessage]}");
             if(numberMessage < messages.Count)
             OnSendMessage?.Invoke(this, new EventMessage(

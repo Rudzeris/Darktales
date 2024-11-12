@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour, ICharacter
     [SerializeField] private float _get_damage_cooldown = 0.3f;
     [SerializeField] private float _get_damage_time = 0f;
     [SerializeField] private bool _isDamage;
+    [SerializeField] private SpriteRenderer _stunSprite;
     private Vector3 _spawnPoint;
     private DialogTrigger dialogTrigger = new DialogTrigger();
     public int HP
@@ -113,11 +114,15 @@ public class Enemy : MonoBehaviour, ICharacter
     {
         enemyController.enabled = false;
         enemyAttack.enabled = false;
+        if(_stunSprite != null)
+        _stunSprite.enabled = true;
     }
 
     private void ResumeEnemyBehavior()
     {
         enemyController.enabled = true;
         enemyAttack.enabled = true;
+        if (_stunSprite != null)
+            _stunSprite.enabled = false;
     }
 }
