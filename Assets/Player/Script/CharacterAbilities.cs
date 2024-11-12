@@ -1,5 +1,6 @@
 using Assets.Character;
 using Assets.Player.Script.Abilities;
+using Assets.UI.Dialogue;
 using System;
 using UnityEngine;
 
@@ -12,6 +13,8 @@ public class CharacterAbilities : MonoBehaviour
     private bool activeAbility1 = false;
     private bool activeAbility2 = false;
     private bool activeAbility3 = false;
+    private DialogueSender dialogSender;
+    private bool isSending3 = false;
     private void Awake()
     {
         ability1 = GetComponent<FearAbility>();
@@ -21,6 +24,7 @@ public class CharacterAbilities : MonoBehaviour
         ability1.OnActivated += AbilityActivate;
         ability2.OnActivated += AbilityActivate;
         ability3.OnActivated += AbilityActivate;
+        dialogSender = GetComponent<DialogueSender>();
     }
     public void OnAbility1()
     {
@@ -46,6 +50,11 @@ public class CharacterAbilities : MonoBehaviour
             activeAbility1 = op.Ability1;
             activeAbility2 = op.Ability2;
             activeAbility3 = op.Ability3;
+            if (activeAbility2 && !isSending3)
+            {
+                dialogSender.SendMessage(2);
+                isSending3 = true;
+            }
         }
     }
 }

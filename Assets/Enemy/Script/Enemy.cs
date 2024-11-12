@@ -1,4 +1,5 @@
 using Assets.Character;
+using Assets.UI.Dialogue;
 using System;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ public class Enemy : MonoBehaviour, ICharacter
     [SerializeField] private float _get_damage_time = 0f;
     [SerializeField] private bool _isDamage;
     private Vector3 _spawnPoint;
+    private DialogTrigger dialogTrigger = new DialogTrigger();
     public int HP
     {
         get => _hp;
@@ -35,6 +37,7 @@ public class Enemy : MonoBehaviour, ICharacter
 
     private void Awake()
     {
+        dialogTrigger.IsOneTriger = true;
         _spawnPoint = gameObject.transform.position;
         enemyController = gameObject.GetComponent<EnemyController2D>();
         enemyAttack = gameObject.GetComponent<EnemyAttack>();
@@ -100,6 +103,7 @@ public class Enemy : MonoBehaviour, ICharacter
     // Реализация метода Stun
     public void Stun(float duration)
     {
+        gameObject.GetComponent<DialogueSender>().SendMessage(0);
         isStunned = true;
         stunTimer = duration;
         StopEnemyBehavior();

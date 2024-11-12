@@ -322,4 +322,5 @@ MonoBehaviour:
   duration: 5
   numberMessage: 0
   isRandom: 0
-  coolTimer: 0
+  countWordsPerSecond: 5
+  nextSender: {fileID: 0}
